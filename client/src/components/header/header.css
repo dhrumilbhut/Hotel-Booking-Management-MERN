@@ -12,6 +12,10 @@
   margin: 20px 0px 100px 0px;
 }
 
+.headerContainer.listMode {
+  margin: 20px 0px 0px 0px;
+}
+
 .headerList {
   display: flex;
   gap: 40px;
@@ -81,9 +85,11 @@
 .date {
   position: absolute;
   top: 50px;
+  z-index: 2;
 }
 
 .options {
+  z-index: 2;
   position: absolute;
   top: 50px;
   background-color: white;
