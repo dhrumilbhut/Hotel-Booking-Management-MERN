@@ -1,8 +1,7 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
 const MONGODB_URL = process.env.MONGODB_URL;
-
-exports.connect = () => {
+const connect = () => {
   mongoose.set("strictQuery", false);
   mongoose
     .connect(MONGODB_URL)
@@ -13,3 +12,4 @@ exports.connect = () => {
       process.exit(1);
     });
 };
+export default connect;

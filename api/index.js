@@ -1,11 +1,7 @@
-const express = require("express");
-require("dotenv").config();
-const db = require("./config/db");
-
-// dotenv.config();
-const app = express();
+import app from "./app.js";
+import connect from "./config/db.js";
 
 app.listen(8800, () => {
-  db.connect();
+  connect();
   console.log("connected to backend.");
 });
