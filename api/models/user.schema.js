@@ -36,8 +36,6 @@ const userSchema = mongoose.Schema(
       type: Boolean,
       default: false,
     },
-    forgotPasswordToken: String,
-    forgotPasswordTokenExpiry: String,
   },
   {
     timestamps: true,
@@ -46,8 +44,10 @@ const userSchema = mongoose.Schema(
 
 // Password encryption before saving to db
 userSchema.pre("save", async function (next) {
-  if (!this.Modified("password")) return next();
-  this.password = await bcrypt.hash(this.password, 10);
+  if (!this.isModified("password")) return next();
+  var salt = bcrypt.genSaltSync(10);
+  var hash = bcrypt.hashSync(this.password, salt);
+  this.password = hash;
   next();
 });
 
