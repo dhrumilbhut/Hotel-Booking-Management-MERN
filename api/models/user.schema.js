@@ -20,6 +20,17 @@ const userSchema = mongoose.Schema(
       trim: true,
       lowercase: true,
     },
+    country: {
+      type: String,
+      required: true,
+    },
+    img: {
+      type: String,
+    },
+    city: {
+      type: String,
+      required: true,
+    },
     password: {
       type: String,
       required: [true, "Password is required"],
