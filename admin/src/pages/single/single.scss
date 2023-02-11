@@ -10,7 +10,7 @@
       gap: 20px;
 
       .left {
-        flex: 1;
+        width: 40%;
         -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
         box-shadow: 2px 4px 10px 1px rgba(201, 201, 201, 0.47);
         padding: 20px;
@@ -30,7 +30,7 @@
 
         .item {
           display: flex;
-          gap: 20px;
+          gap: 80px;
 
           .itemImg {
             width: 100px;
@@ -63,16 +63,7 @@
         }
       }
 
-      .right {
-        flex: 2;
-      }
-    }
-
-    .bottom {
-      -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
-      box-shadow: 2px 4px 10px 1px rgba(201, 201, 201, 0.47);
-      padding: 20px;
-      margin: 10px 20px;
+      
     }
 
     .title {

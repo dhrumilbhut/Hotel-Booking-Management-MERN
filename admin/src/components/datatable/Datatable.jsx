@@ -1,7 +1,7 @@
 import "./datatable.scss";
 import { DataGrid } from "@mui/x-data-grid";
 import { userColumns } from "../../datatablesource";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import useFetch from "../../hooks/useFetch";
 import axios from "axios";
@@ -22,6 +22,10 @@ const Datatable = ({ columns }) => {
       setList(list.filter((item) => item._id !== id));
     } catch (err) {}
   };
+  const navigate = useNavigate();
+  const handleClick = (id) => {
+    navigate(`/users/${id}`);
+  };
 
   const actionColumn = [
     {
@@ -31,9 +35,12 @@ const Datatable = ({ columns }) => {
       renderCell: (params) => {
         return (
           <div className="cellAction">
-            <Link to="/users/test" style={{ textDecoration: "none" }}>
-              <div className="viewButton">View</div>
-            </Link>
+            {/* <Link to="/users/test" > */}
+            <div className="viewButton" onClick={() =>handleClick(params.row._id)}>
+              View
+            </div>
+
+            {/* </Link> */}
             <div
               className="deleteButton"
               onClick={() => handleDelete(params.row._id)}
