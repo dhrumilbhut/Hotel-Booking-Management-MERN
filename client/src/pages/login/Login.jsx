@@ -24,11 +24,18 @@ const Login = () => {
 
     try {
       const res = await axios.post("/auth/login", credentials);
+      if(res.data){
       dispatch({ type: "LOGIN_SUCCESS", payload: res.data.details });
       navigate("/");
-    } catch (error) {
-      dispatch({ type: "LOGIN_FAILURE", payload: error.responose.data });
+    } else {
+      dispatch({
+        type: "LOGIN_FAILURE",
+        payload: { message: "You are not allowed!" },
+      });
     }
+  } catch (err) {
+    dispatch({ type: "LOGIN_FAILURE", payload: err.response.data });
+  }
   };
 
   return (

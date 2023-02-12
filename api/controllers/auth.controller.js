@@ -5,12 +5,9 @@ import jwt from "jsonwebtoken";
 
 export const register = async (req, res, next) => {
   try {
-    const salt = bcrypt.genSaltSync(10);
-    const hash = bcrypt.hashSync(req.body.password, salt);
 
-    const newUser = new User({
+    const newUser = await new User({
       ...req.body,
-      password: hash,
     });
 
     await newUser.save();
@@ -23,18 +20,16 @@ export const login = async (req, res, next) => {
   try {
     const email = req.body.email;
     const user = await User.findOne({ email }).select("+password");
+    console.log(req.body.password)
+    console.log(user.password);
 
     if (!user) {
-      console.log(user);
       return next(customError(404, "User not found!"));
     }
 
-    const isPasswordCorrect = await bcrypt.compare(
-      req.body.password,
-      user.password
-    );
+    const isPasswordCorrect = await bcrypt.compare(req.body.password, user.password);
     if (!isPasswordCorrect)
-      return next(customError(400, "Wrong password or username!"));
+      return next(customError(400, "Wrong password !"));
 
     const token = jwt.sign(
       { id: user._id, isAdmin: user.isAdmin },

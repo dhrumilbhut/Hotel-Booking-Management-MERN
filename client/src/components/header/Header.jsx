@@ -41,8 +41,13 @@ const Header = ({ type }) => {
   const { user } = useContext(AuthContext);
 
   const handleSearch = () => {
+    if(user){
     dispatch({ type: "NEW_SEARCH", payload: { destination, dates, options } });
     navigate("/hotels", { state: { destination, dates, options } });
+    }
+    else {
+      navigate("/login")
+    }
   };
 
   const handleOption = (name, operation) => {
