@@ -10,7 +10,7 @@ const Datatable = ({ columns }) => {
   const location = useLocation();
   const path = location.pathname.split("/")[1];
   const [list, setList] = useState([]);
-  const { data, loading, error } = useFetch(`/${path}`);
+  const { data } = useFetch(`/${path}`);
 
   useEffect(() => {
     setList(data);
@@ -24,7 +24,7 @@ const Datatable = ({ columns }) => {
   };
   const navigate = useNavigate();
   const handleClick = (id) => {
-    navigate(`/users/${id}`);
+    navigate(`/${path}/${id}`);
   };
 
   const actionColumn = [
@@ -35,12 +35,13 @@ const Datatable = ({ columns }) => {
       renderCell: (params) => {
         return (
           <div className="cellAction">
-            {/* <Link to="/users/test" > */}
-            <div className="viewButton" onClick={() =>handleClick(params.row._id)}>
+            <div
+              className="viewButton"
+              onClick={() => handleClick(params.row._id)}
+            >
               View
             </div>
 
-            {/* </Link> */}
             <div
               className="deleteButton"
               onClick={() => handleDelete(params.row._id)}

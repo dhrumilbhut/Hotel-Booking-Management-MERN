@@ -71,14 +71,14 @@ function App() {
                   </ProtectedRoute>
                 }
               />
-              <Route
+              {/* <Route
                 path=":productId"
                 element={
                   <ProtectedRoute>
                     <Single />
                   </ProtectedRoute>
                 }
-              />
+              /> */}
               <Route
                 path="new"
                 element={
