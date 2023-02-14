@@ -1,32 +1,110 @@
-.login {
+.mainContainer {
   height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: #f0f4f3;
 }
 
-.lContainer {
+.contentArea {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 60%;
+  height: 70vh;
+}
+
+.left {
+  background-color: #003580;
+  width: 60%;
+  height: 100%;
+  color: white;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 25px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
 }
 
-.lInput {
-  height: 30px;
-  padding: 10px;
-}
-
-.lButton {
-  border: none;
-  padding: 10px 20px;
-  background-color: #0071c2;
-  color: white;
+.left h1 {
   font-weight: bold;
-  cursor: pointer;
-  border-radius: 5px;
 }
 
-.lButton:disabled {
-  background-color: #0071c28c;
-  cursor: not-allowed;
+.left p {
+  font-weight: 300;
+  margin-top: 10px;
+}
+
+.left button {
+  width: 100%;
+  padding: 10px;
+  background: transparent;
+  border: 1px solid #ddd;
+  border-radius: 50px;
+  color: #fff;
+  font-size: 15px;
+}
+
+.left button:hover {
+  background-color: white;
+  color: #003580;
+  border-color: white;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.right {
+  background-color: white;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  padding: 26px 150px;
+  border-bottom-left-radius: 10px;
+  border-top-left-radius: 10px;
+}
+
+.right h1 {
+  color: #003580;
+  font-weight: bold;
+  text-transform: capitalize;
+}
+
+.right p {
+  font-weight: 300;
+  margin: 10px 0 20px 0;
+}
+
+.right button {
+  background-color: #003580;
+  width: 50%;
+  color: white;
+  padding: 10px;
+  border-radius: 50px;
+  font-size: 16px;
+  border: 1px solid #003580;
+  outline: none;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.right button:hover {
+  background-color: #fff;
+  color: #003580;
+  border: 1px solid #003580;
+}
+
+form {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px 0;
 }

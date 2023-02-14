@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useContext, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
+import { API_URL } from "../../API_URL";
 import { AuthContext } from "../../context/AuthContext";
 import "./login.css";
 
@@ -23,7 +24,7 @@ const Login = () => {
     dispatch({ type: "LOGIN_START" });
 
     try {
-      const res = await axios.post("/auth/login", credentials);
+      const res = await axios.post(`${API_URL}/auth/login`, credentials);
       if(res.data){
       dispatch({ type: "LOGIN_SUCCESS", payload: res.data.details });
       navigate("/");
@@ -39,26 +40,60 @@ const Login = () => {
   };
 
   return (
-    <div className="login">
-      <div className="lContainer">
-        <input
-          type="text"
-          placeholder="email"
-          id="email"
-          className="lInput"
-          onChange={handleChange}
-        />
-        <input
-          type="password"
-          placeholder="password"
-          id="password"
-          className="lInput"
-          onChange={handleChange}
-        />
-        <button disabled={loading} onClick={handleClick} className="lButton">
-          Login
-        </button>
-        {error && <span>{error.message}</span>}
+    <div className="mainContainer">
+      <div className="contentArea">
+        <div className="right">
+          <h1>Sign in your account!</h1>
+          <p>Login with your personal details for continue</p>
+          <form>
+            <input
+              style={{
+                width: "100%",
+                padding: "15px",
+                border: "none",
+                outline: "none",
+                backgroundColor: "#ddd",
+                borderRadius: "5px",
+              }}
+              type="text"
+              placeholder="email"
+              id="email"
+              onChange={handleChange}
+            />
+            <input
+              style={{
+                width: "100%",
+                padding: "15px",
+                border: "none",
+                outline: "none",
+                backgroundColor: "#ddd",
+                borderRadius: "5px",
+              }}
+              type="password"
+              placeholder="Password"
+              id="password"
+              onChange={handleChange}
+            />
+            <button disabled={loading} onClick={handleClick}>
+              Login
+            </button>
+            {error && <span>{error.message}</span>}
+          </form>
+        </div>
+        <div className="left">
+          <h1>Welcome Back!</h1>
+          <p>to continue please login with your personal account information</p>
+          <span style={{ padding: "20px 0" }}>Don't have a account?</span>
+
+          <button>
+            <Link
+              to="/register"
+              style={{ color: "inherit", textDecoration: "none" }}
+            >
+              Sign Up
+            </Link>
+          </button>
+        </div>
       </div>
     </div>
   );

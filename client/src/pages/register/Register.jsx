@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useContext, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import {Link, useNavigate } from "react-router-dom";
+import { API_URL } from "../../API_URL";
 import { AuthContext } from "../../context/AuthContext";
 import "./register.css";
 
@@ -28,7 +29,7 @@ const Register = () => {
     // dispatch({ type: "LOGIN_START" });
 
     try {
-      const res = await axios.post("/auth/register", credentials);
+      const res = await axios.post(`${API_URL}/auth/register`, credentials);
       if (res.data) {
         dispatch({ type: "LOGIN_SUCCESS", payload: res.data.details });
         navigate("/login");
@@ -44,57 +45,125 @@ const Register = () => {
   };
 
   return (
-    <div className="login">
-      <div className="lContainer">
-        <input
-          type="text"
-          placeholder="name"
-          id="name"
-          className="lInput"
-          onChange={handleChange}
-        />
-        <input
-          type="text"
-          placeholder="city"
-          id="city"
-          className="lInput"
-          onChange={handleChange}
-        />
-        <input
-          type="text"
-          placeholder="country"
-          id="country"
-          className="lInput"
-          onChange={handleChange}
-        />
-        <input
-          type="text"
-          placeholder="phone"
-          id="phone"
-          className="lInput"
-          onChange={handleChange}
-        />
-        <input
-          type="text"
-          placeholder="email"
-          id="email"
-          className="lInput"
-          onChange={handleChange}
-        />
-        <input
-          type="password"
-          placeholder="password"
-          id="password"
-          className="lInput"
-          onChange={handleChange}
-        />
-        <button disabled={loading} onClick={handleClick} className="lButton">
-          Register
+    <div className="mainContainer">
+    <div className="contentArea">
+      <div className="right">
+        <h1>Create an Account!</h1>
+        <p>
+          Create your own personal <br /> account with your personal details
+          carefully
+        </p>
+        <form>
+          <input
+            style={{
+              width: "100%",
+              padding: "15px",
+              border: "none",
+              outline: "none",
+              backgroundColor: "#ddd",
+              borderRadius: "5px",
+            }}
+            type="text"
+            placeholder="Username"
+            id="username"
+            onChange={handleChange}
+          />
+          <input
+            style={{
+              width: "100%",
+              padding: "15px",
+              border: "none",
+              outline: "none",
+              backgroundColor: "#ddd",
+              borderRadius: "5px",
+            }}
+            type="email"
+            placeholder="Email"
+            id="email"
+            onChange={handleChange}
+          />
+
+          <input
+            style={{
+              width: "100%",
+              padding: "15px",
+              border: "none",
+              outline: "none",
+              backgroundColor: "#ddd",
+              borderRadius: "5px",
+            }}
+            type="text"
+            placeholder="Phone"
+            id="phone"
+            onChange={handleChange}
+          />
+
+          <input
+            style={{
+              width: "100%",
+              padding: "15px",
+              border: "none",
+              outline: "none",
+              backgroundColor: "#ddd",
+              borderRadius: "5px",
+            }}
+            type="text"
+            placeholder="City"
+            id="city"
+            onChange={handleChange}
+          />
+
+          <input
+            style={{
+              width: "100%",
+              padding: "15px",
+              border: "none",
+              outline: "none",
+              backgroundColor: "#ddd",
+              borderRadius: "5px",
+            }}
+            type="text"
+            placeholder="Country"
+            id="country"
+            onChange={handleChange}
+          />
+
+          <input
+            style={{
+              width: "100%",
+              padding: "15px",
+              border: "none",
+              outline: "none",
+              backgroundColor: "#ddd",
+              borderRadius: "5px",
+            }}
+            type="password"
+            placeholder="Password"
+            id="password"
+            onChange={handleChange}
+          />
+
+          <button disabled={loading} onClick={handleClick}>
+            Sign up
+          </button>
+          {error && <span>{error.message}</span>}
+        </form>
+      </div>
+      <div className="left">
+        <h1>Hello There!</h1>
+        <p>Create your own personal account carefully</p>
+        <span style={{ padding: "20px 0" }}>Already have a account?</span>
+        <button>
+          <Link
+            to="/login"
+            style={{ color: "inherit", textDecoration: "none" }}
+          >
+            Login
+          </Link>
         </button>
-        {error && <span>{error.message}</span>}
       </div>
     </div>
-  );
+  </div>
+);
 };
-
 export default Register;

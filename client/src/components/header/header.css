@@ -45,6 +45,7 @@
   font-weight: 500;
   cursor: pointer;
   padding: 10px;
+  border-radius: 5px;
 }
 
 .headerSearch {
