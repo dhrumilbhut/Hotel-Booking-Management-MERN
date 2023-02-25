@@ -4,11 +4,11 @@
   display: flex;
   justify-content: center;
   position: relative;
+  width: 100%;
 }
 
 .headerContainer {
   width: 100%;
-  max-width: 1024px;
   margin: 20px 0px 100px 0px;
 }
 
@@ -34,8 +34,11 @@
   border-radius: 20px;
 }
 
-.headerDesc {
-  margin: 20px 0px;
+.headerDesc,
+.headerTitle {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 15px;
 }
 
 .headerBtn {
@@ -59,8 +62,8 @@
   border-radius: 5px;
   position: absolute;
   bottom: -25px;
-  width: 100%;
-  max-width: 1024px;
+  width: 70%;
+  margin-left: 220px;
 }
 
 .headerIcon {
@@ -125,4 +128,43 @@
 
 .optionCounterButton:disabled {
   cursor: not-allowed;
+}
+
+@media screen and (max-width: 560px) {
+  .header {
+    width: 550px;
+    font-size: small;
+  }
+  .headerSearch {
+    font-size: small;
+    width: 80%;
+    margin-left: 50px;
+  }
+  .headerTitle {
+    text-align: center;
+  }
+  .headerDesc {
+    text-align: center;
+  }
+
+  .headerBtnRegister {
+    display: none;
+  }
+  .headerList {
+    display: none;
+  }
+  .headerSearchText {
+    display: none;
+  }
+  .headerIcon {
+    font-size: x-large;
+  }
+  .date {
+    width: 350px;
+    right: 50px;
+  }
+  .options {
+    width: 230px;
+    right: 20px;
+  }
 }

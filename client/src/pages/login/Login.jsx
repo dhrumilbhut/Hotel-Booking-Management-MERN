@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useContext, useState } from "react";
-import { Link,useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { API_URL } from "../../API_URL";
 import { AuthContext } from "../../context/AuthContext";
 import "./login.css";
@@ -24,19 +24,19 @@ const Login = () => {
     dispatch({ type: "LOGIN_START" });
 
     try {
-      const res = await axios.post(`${API_URL}/auth/login`, credentials);
-      if(res.data){
-      dispatch({ type: "LOGIN_SUCCESS", payload: res.data.details });
-      navigate("/");
-    } else {
-      dispatch({
-        type: "LOGIN_FAILURE",
-        payload: { message: "You are not allowed!" },
-      });
+      const res = await axios.post(`/api/auth/login`, credentials);
+      if (res.data) {
+        dispatch({ type: "LOGIN_SUCCESS", payload: res.data.details });
+        navigate("/");
+      } else {
+        dispatch({
+          type: "LOGIN_FAILURE",
+          payload: { message: "You are not allowed!" },
+        });
+      }
+    } catch (err) {
+      dispatch({ type: "LOGIN_FAILURE", payload: err.response.data });
     }
-  } catch (err) {
-    dispatch({ type: "LOGIN_FAILURE", payload: err.response.data });
-  }
   };
 
   return (

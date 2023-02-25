@@ -14,6 +14,7 @@
   overflow: hidden;
   height: 250px;
   flex: 1;
+  cursor: pointer;
 }
 
 .featuredImg {

@@ -8,7 +8,7 @@ import Footer from "../../components/footer/Footer";
 
 const Home = () => {
   return (
-    <div>
+    <div className="homeMain">
       <Navbar />
       <Header />
       <div className="homeContainer">
@@ -16,7 +16,7 @@ const Home = () => {
         <h1 className="homeTitle">Browse by property type</h1>
         <PropertyList />
         <MailList />
-        <Footer />
+        {/* <Footer /> */}
       </div>
     </div>
   );

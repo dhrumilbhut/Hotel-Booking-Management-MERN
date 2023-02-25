@@ -1,12 +1,24 @@
+.homeMain {
+  width: 100%;
+}
+
 .homeContainer {
   margin-top: 50px;
   display: flex;
   align-items: center;
   flex-direction: column;
-  gap: 30px;
+  /* gap: 30px; */
 }
 
 .homeTitle {
-  width: 1024px;
+  padding: 20px;
   font-size: 20px;
+  display: flex;
+  align-items: center;
+}
+
+@media screen and (max-width: 560px) {
+  .homeMain {
+    height: 100%;
+  }
 }

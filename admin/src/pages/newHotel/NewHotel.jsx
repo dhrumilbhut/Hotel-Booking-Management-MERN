@@ -34,13 +34,13 @@ const NewHotel = () => {
           const data = new FormData();
           data.append("file", file);
           data.append("upload_preset", "upload");
-          const uploadRes = await axios.post(
-            "https://api.cloudinary.com/v1_1/lamadev/image/upload",
-            data
-          );
+          // const uploadRes = await axios.post(
+          //   "https://api.cloudinary.com/v1_1/dt30ka7tn/image/upload",
+          //   data
+          // );
 
-          const { url } = uploadRes.data;
-          return url;
+          // const { url } = uploadRes.data;
+          // return url;
         })
       );
 
@@ -50,7 +50,7 @@ const NewHotel = () => {
         photos: list,
       };
 
-      await axios.post("/hotels", newhotel);
+      await axios.post("/api/hotels", newhotel);
     } catch (err) {
       console.log(err);
     }

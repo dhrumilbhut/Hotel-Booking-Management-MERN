@@ -45,10 +45,12 @@ export const getHotel = async (req, res, next) => {
 };
 
 export const getHotels = async (req, res, next) => {
-  const { min, max, limit, ...others } = req.query;
+  const { min, max, limit, city, ...others } = req.query;
+  const cityNameRegex = new RegExp(city, "i");
+
   try {
     const hotels = await Hotel.find({
-      ...others,
+      $or: [{ city: cityNameRegex }],
       cheapestPrice: { $gt: min || 1, $lt: max || 99999 },
     }).limit(limit);
     res.status(200).json(hotels);

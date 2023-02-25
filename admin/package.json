@@ -45,5 +45,5 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "https://hotel-management-2dfd.onrender.com/api"
+  "proxy": "http://localhost:3001"
 }

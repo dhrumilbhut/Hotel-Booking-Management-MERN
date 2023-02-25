@@ -19,19 +19,19 @@ const New = ({ inputs, title }) => {
     data.append("file", file);
     data.append("upload_preset", "upload");
     try {
-      const uploadRes = await axios.post(
-        "https://api.cloudinary.com/v1_1/dt30ka7tn/image/upload",
-        data
-      );
+      // const uploadRes = await axios.post(
+      //   "https://api.cloudinary.com/v1_1/dt30ka7tn/image/upload",
+      //   data
+      // );
 
-      const { url } = uploadRes.data;
+      // const { url } = uploadRes.data;
 
       const newUser = {
         ...info,
-        img: url,
+        // img: url,
       };
 
-      await axios.post("/auth/register", newUser);
+      await axios.post("/api/auth/register", newUser);
     } catch (err) {
       console.log(err);
     }
@@ -77,7 +77,7 @@ const New = ({ inputs, title }) => {
                     onChange={handleChange}
                     type={input.type}
                     placeholder={input.placeholder}
-                    id= {input.id}
+                    id={input.id}
                   />
                 </div>
               ))}

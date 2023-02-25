@@ -24,7 +24,8 @@ const Hotel = () => {
   const [open, setOpen] = useState(false);
   const [openModal, setOpenModal] = useState(false);
 
-  const { data, loading } = useFetch(`/hotels/find/${id}`);
+  const { data, loading } = useFetch(`/hotels/${id}`);
+  console.log(data)
 
   const { dates, options } = useContext(SearchContext);
   const { user } = useContext(AuthContext);
@@ -60,6 +61,7 @@ const Hotel = () => {
   const handleClick = () => {
     if (user) {
       setOpenModal(true);
+      console.log(data);
     } else {
       navigate("/login");
     }

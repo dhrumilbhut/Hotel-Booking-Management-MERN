@@ -3,11 +3,12 @@
   background-color: #003580;
   display: flex;
   justify-content: center;
+  align-items: center;
+  width: 100%;
 }
 
 .navContainer {
   width: 100%;
-  max-width: 1024px;
   color: white;
   display: flex;
   align-items: center;
@@ -39,7 +40,22 @@
   padding: 5px;
   border-radius: 50%;
 }
+.logo {
+  margin-left: 50px;
+}
 
 .navItems {
   display: flex;
+  margin: 50px;
+}
+@media screen and (max-width: 560px) {
+  .navbar {
+    width: 550px;
+  }
+  .navItems {
+    margin-right: 15px;
+  }
+  .logo {
+    margin-left: 25px;
+  }
 }

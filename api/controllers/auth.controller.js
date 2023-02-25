@@ -19,8 +19,6 @@ export const login = async (req, res, next) => {
   try {
     const email = req.body.email;
     const user = await User.findOne({ email }).select("+password");
-    console.log(req.body.password);
-    console.log(user.password);
 
     if (!user) {
       return next(customError(404, "User not found!"));
@@ -37,17 +35,13 @@ export const login = async (req, res, next) => {
       process.env.JWT_SECRET
     );
 
-    const options = {
-      expiresIn: new Date(
-        Date.now() + process.env.COOKIE_EXPIRE_DAYS * 20 * 60 * 60 * 1000
-      ),
-      httpOnly: true,
-    };
-
     const { password, isAdmin, ...otherDetails } = user._doc;
     res
-      .cookie("access_token", token, options)
       .status(200)
+      .cookie("access_token", token, {
+        expires: new Date(Date.now() + 3 * 20 * 60 * 60 * 1000),
+        httpOnly: true,
+      })
       .json({ details: { ...otherDetails }, isAdmin });
   } catch (err) {
     next(err);

@@ -1,7 +1,9 @@
 .footer {
   width: 100%;
-  width: 1024px;
+  /* width: 1024px; */
   font-size: 12px;
+  display: flex;
+  flex-direction: column;
 }
 
 .fLists {

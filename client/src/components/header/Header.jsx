@@ -41,12 +41,14 @@ const Header = ({ type }) => {
   const { user } = useContext(AuthContext);
 
   const handleSearch = () => {
-    if(user){
-    dispatch({ type: "NEW_SEARCH", payload: { destination, dates, options } });
-    navigate("/hotels", { state: { destination, dates, options } });
-    }
-    else {
-      navigate("/login")
+    if (user) {
+      dispatch({
+        type: "NEW_SEARCH",
+        payload: { destination, dates, options },
+      });
+      navigate("/hotels", { state: { destination, dates, options } });
+    } else {
+      navigate("/login");
     }
   };
 
@@ -66,7 +68,7 @@ const Header = ({ type }) => {
           type === "list" ? "headerContainer listMode" : "headerContainer"
         }
       >
-        <div className="headerList">
+        {/* <div className="headerList">
           <div className="headerListItem active">
             <FontAwesomeIcon icon={faBed} />
             <span>Stays</span>
@@ -87,14 +89,18 @@ const Header = ({ type }) => {
             <FontAwesomeIcon icon={faTaxi} />
             <span>Airport Taxies</span>
           </div>
-        </div>
+        </div> */}
         {type !== "list" && (
           <>
             <h1 className="headerTitle">Find your next stay</h1>
             <p className="headerDesc">
               Search deals on hotels, homes, and much more...
             </p>
-            {!user && <button className="headerBtn">Sign in / Register</button>}
+            {!user && (
+              <button className="headerBtn headerBtnRegister">
+                Sign in / Register
+              </button>
+            )}
             <div className="headerSearch">
               <div className="headerSearchItem">
                 <FontAwesomeIcon icon={faBed} className="headerIcon" />
@@ -106,7 +112,11 @@ const Header = ({ type }) => {
                 />
               </div>
               <div className="headerSearchItem">
-                <FontAwesomeIcon icon={faCalendarDays} className="headerIcon" />
+                <FontAwesomeIcon
+                  icon={faCalendarDays}
+                  className="headerIcon"
+                  onClick={() => setOpenDate(!openDate)}
+                />
                 <span
                   onClick={() => setOpenDate(!openDate)}
                   className="headerSearchText"
@@ -126,7 +136,11 @@ const Header = ({ type }) => {
                 )}
               </div>
               <div className="headerSearchItem">
-                <FontAwesomeIcon icon={faPerson} className="headerIcon" />
+                <FontAwesomeIcon
+                  icon={faPerson}
+                  className="headerIcon"
+                  onClick={() => setOpenOptions(!openOptions)}
+                />
                 <span
                   onClick={() => setOpenOptions(!openOptions)}
                   className="headerSearchText"

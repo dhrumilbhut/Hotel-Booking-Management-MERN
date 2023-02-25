@@ -12,6 +12,10 @@ import { useContext } from "react";
 const Navbar = () => {
   const { dispatch } = useContext(DarkModeContext);
 
+  const handleLogout = () => {
+    localStorage.clear();
+    window.location.reload(false);
+  };
   return (
     <div className="navbar">
       <div className="wrapper">
@@ -20,17 +24,17 @@ const Navbar = () => {
           <SearchOutlinedIcon />
         </div>
         <div className="items">
-          <div className="item">
+          {/* <div className="item">
             <LanguageOutlinedIcon className="icon" />
             English
-          </div>
+          </div> */}
           <div className="item">
             <DarkModeOutlinedIcon
               className="icon"
               onClick={() => dispatch({ type: "TOGGLE" })}
             />
           </div>
-          <div className="item">
+          {/* <div className="item">
             <FullscreenExitOutlinedIcon className="icon" />
           </div>
           <div className="item">
@@ -43,13 +47,18 @@ const Navbar = () => {
           </div>
           <div className="item">
             <ListOutlinedIcon className="icon" />
-          </div>
+          </div> */}
           <div className="item">
             <img
               src="https://images.pexels.com/photos/941693/pexels-photo-941693.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
               alt=""
               className="avatar"
             />
+          </div>
+          <div className="item">
+            <button className="navButton" onClick={handleLogout}>
+              Logout
+            </button>
           </div>
         </div>
       </div>
