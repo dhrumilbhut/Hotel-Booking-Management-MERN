@@ -1,0 +1,14 @@
+.home {
+  display: flex;
+
+  .homeContainer {
+    flex: 6;
+    
+    .item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 80%;
+    }
+  }
+}

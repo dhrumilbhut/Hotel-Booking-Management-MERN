@@ -25,7 +25,7 @@ const Hotel = () => {
   const [openModal, setOpenModal] = useState(false);
 
   const { data, loading } = useFetch(`/hotels/${id}`);
-  console.log(data)
+  console.log(data);
 
   const { dates, options } = useContext(SearchContext);
   const { user } = useContext(AuthContext);
@@ -39,6 +39,10 @@ const Hotel = () => {
     return diffDays;
   }
 
+  if (!dates[0].endDate || !dates[0].startDate) {
+    dates[0].endDate = new Date();
+    dates[0].startDate = new Date();
+  }
   const days = dayDifference(dates[0].endDate, dates[0].startDate);
 
   const handleOpen = (i) => {

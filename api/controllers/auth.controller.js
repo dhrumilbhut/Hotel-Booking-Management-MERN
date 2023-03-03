@@ -36,13 +36,22 @@ export const login = async (req, res, next) => {
     );
 
     const { password, isAdmin, ...otherDetails } = user._doc;
-    res
-      .status(200)
-      .cookie("access_token", token, {
-        expires: new Date(Date.now() + 3 * 20 * 60 * 60 * 1000),
-        httpOnly: true,
-      })
-      .json({ details: { ...otherDetails }, isAdmin });
+    res.status(200).json({ details: { ...otherDetails }, isAdmin, token });
+  } catch (err) {
+    next(err);
+  }
+};
+
+export const logout = async (req, res, next) => {
+  try {
+    res.cookie("authToken", null, {
+      expires: new Date(Date.now()),
+      httpOnly: true,
+    });
+    res.status(200).json({
+      success: true,
+      message: "logged out",
+    });
   } catch (err) {
     next(err);
   }

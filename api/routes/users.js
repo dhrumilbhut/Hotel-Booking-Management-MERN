@@ -13,7 +13,7 @@ const router = express.Router();
 router.put("/:id", verifyUser, updateUser);
 
 //DELETE User ROUTE
-router.delete("/:id", verifyUser, deleteUser);
+router.delete("/:id", deleteUser);
 
 //GET User ROUTE
 router.get("/:id", verifyUser, getUser);

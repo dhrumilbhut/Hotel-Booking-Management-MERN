@@ -22,14 +22,12 @@ const userSchema = mongoose.Schema(
     },
     country: {
       type: String,
-      required: true,
     },
     img: {
       type: String,
     },
     city: {
       type: String,
-      required: true,
     },
     password: {
       type: String,
@@ -39,7 +37,6 @@ const userSchema = mongoose.Schema(
     },
     phone: {
       type: String,
-      required: [true, "Phone Number is required"],
       minLength: [10, "Phone number must be 10 digits"],
       trim: true,
     },

@@ -1,0 +1,82 @@
+.navbarAdmin {
+  height: 50px;
+  border-bottom: 0.5px solid rgb(231, 228, 228);
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  color: #555;
+
+  .wrapperAdmin {
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .searchAdmin {
+      display: flex;
+      align-items: center;
+      border: 0.5px solid lightgray;
+      padding: 3px;
+
+      input {
+        border: none;
+        outline: none;
+        background: transparent;
+
+        &::placeholder {
+          font-size: 12px;
+        }
+      }
+    }
+
+    .itemsAdmin {
+      display: flex;
+      align-items: center;
+
+      .itemAdmin {
+        display: flex;
+        align-items: center;
+        margin-right: 20px;
+        position: relative;
+
+        .iconAdmin {
+          font-size: 20px;
+        }
+
+        .navButtonAdmin {
+          margin-left: 20px;
+          bottom: none;
+          padding: 5px 10px;
+          cursor: pointer;
+          color: #003580;
+          font-weight: 600;
+          border-radius: 5px;
+          border: 1px solid #003580;
+        }
+
+        .avatarAdmin {
+          width: 30px;
+          height: 30px;
+          border-radius: 50%;
+        }
+
+        .counterAdmin {
+          width: 15px;
+          height: 15px;
+          background-color: red;
+          border-radius: 50%;
+          color: white;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 10px;
+          font-weight: bold;
+          position: absolute;
+          top: -5px;
+          right: -5px;
+        }
+      }
+    }
+  }
+}

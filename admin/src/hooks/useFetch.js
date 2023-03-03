@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { API_URL } from "../../../client/src/API_URL";
 // import { API_URL } from "../../../client/src/API_URL";
 
 const useFetch = (url) => {
@@ -11,7 +12,7 @@ const useFetch = (url) => {
     const fetchData = async () => {
       setLoading(true);
       try {
-        const res = await axios.get(`http://localhost:3001/api${url}`);
+        const res = await axios.get(`${API_URL}${url}`);
         setData(res.data);
       } catch (error) {
         setError(error);
@@ -24,7 +25,7 @@ const useFetch = (url) => {
   const reFetch = async () => {
     setLoading(true);
     try {
-      const res = await axios.get(`http://localhost:3001/api${url}`);
+      const res = await axios.get(`${API_URL}${url}`);
       setData(res.data);
     } catch (error) {
       setError(error);

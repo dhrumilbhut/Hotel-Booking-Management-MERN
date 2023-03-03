@@ -15,8 +15,10 @@ const Datatable = ({ columns }) => {
   useEffect(() => {
     setList(data);
   }, [data]);
-
+  console.log();
   const handleDelete = async (id) => {
+    console.log(path);
+    console.log(id);
     try {
       await axios.delete(`/${path}/${id}`);
       setList(list.filter((item) => item._id !== id));
@@ -24,7 +26,9 @@ const Datatable = ({ columns }) => {
   };
   const navigate = useNavigate();
   const handleClick = (id) => {
-    navigate(`/${path}/${id}`);
+    console.log(path);
+    console.log(id);
+    navigate(`/dashboard/${path}/${id}`);
   };
 
   const actionColumn = [

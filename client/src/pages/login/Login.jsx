@@ -2,13 +2,14 @@ import axios from "axios";
 import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { API_URL } from "../../API_URL";
+// import { API_URL } from "../../API_URL";
 import { AuthContext } from "../../context/AuthContext";
 import "./login.css";
 
 const Login = () => {
   const [credentials, setCredentials] = useState({
-    email: undefined,
-    password: undefined,
+    email: "",
+    password: "",
   });
 
   const { loading, error, dispatch } = useContext(AuthContext);
@@ -24,10 +25,17 @@ const Login = () => {
     dispatch({ type: "LOGIN_START" });
 
     try {
-      const res = await axios.post(`/api/auth/login`, credentials);
+      const res = await axios.post(`${API_URL}/auth/login`, credentials);
       if (res.data) {
-        dispatch({ type: "LOGIN_SUCCESS", payload: res.data.details });
-        navigate("/");
+        dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
+
+        localStorage.setItem("access_token", JSON.stringify(res.data.token));
+        // console.log(res.data.token);
+        if (res.data.isAdmin == true) {
+          navigate("/dashboard");
+        } else {
+          navigate("/", { state: { ...res.data } });
+        }
       } else {
         dispatch({
           type: "LOGIN_FAILURE",

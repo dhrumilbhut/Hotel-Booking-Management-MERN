@@ -2,10 +2,11 @@ import JWT from "jsonwebtoken";
 import customError from "./customError.js";
 
 export const verifyToken = (req, res, next) => {
-  const token = req.cookies.access_token;
+  const token = localStorage.getItem("access_token");
+  console.log(token);
 
   if (!token) {
-    return next(customError(401, "You are not authenticated"));
+    return next(customError(401, "You are not authenticated !token"));
   }
 
   JWT.verify(token, process.env.JWT_SECRET, (err, user) => {

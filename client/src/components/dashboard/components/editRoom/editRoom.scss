@@ -1,0 +1,50 @@
+.editRoomDetails{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border: 1px solid var(--theme-color);
+  padding: 10px;
+  border-radius: 5px;
+
+    .detailItem{
+      display: flex;
+      justify-content: flex-start;
+      gap: 10px;
+
+        .itemKey{
+          width: 100px;
+        }
+        
+        .itemValue{
+          // width: 200px;
+          background-color: rgba(209, 209, 209, 0.584);
+          padding: 5px 5px 5px 10px;
+          outline: 1px solid transparent;
+          border-radius: 5px;
+          color: #000;
+          font-size: 16px;
+
+            &:focus{
+              outline: 1px solid var(--theme-color);
+            }
+            &::selection{
+              background-color: rgba(117, 185, 0, 0.322);
+            }
+
+        }
+    }
+
+  button{
+    padding: 10px 50px;  
+    border-radius: 5px;
+    background-color: var(--theme-color);
+    color: #FFF;
+    margin-top: 10px;
+    cursor: pointer;
+    transition: 0.2s ease-in;
+
+      &:hover{
+        background-color: #517e02;
+      }
+  }      
+}

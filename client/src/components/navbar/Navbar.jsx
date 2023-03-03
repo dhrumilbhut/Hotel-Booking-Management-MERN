@@ -2,12 +2,9 @@ import "./navbar.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUser } from "@fortawesome/free-solid-svg-icons";
 
 const Navbar = () => {
   const { user } = useContext(AuthContext);
-
   const navigate = useNavigate();
 
   const handleRegister = () => {
@@ -16,9 +13,9 @@ const Navbar = () => {
   const handleLogin = () => {
     navigate("/login");
   };
-  const handleClick = () => {
-    navigate("/profile");
-  };
+  // const handleClick = () => {
+  //   navigate("/profile");
+  // };
 
   const { dispatch } = useContext(AuthContext);
 
@@ -34,10 +31,7 @@ const Navbar = () => {
         </Link>
         {user ? (
           <div className="navItems">
-            <div className="navProfile" onClick={handleClick}>
-             
-              <FontAwesomeIcon icon={faUser} />
-            </div>
+            {user.details.name}
 
             <button className="navButton" onClick={handleLogout}>
               Logout

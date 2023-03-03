@@ -11,7 +11,7 @@ const useFetch = (url) => {
     const fetchData = async () => {
       setLoading(true);
       try {
-        const res = await axios.get(`http://localhost:3001/api${url}`);
+        const res = await axios.get(`${API_URL}${url}`);
         setData(res.data);
       } catch (error) {
         setError(error);
@@ -29,6 +29,7 @@ const useFetch = (url) => {
     } catch (error) {
       setError(error);
     }
+    setLoading(false);
   };
 
   return { data, loading, error, reFetch };

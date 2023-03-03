@@ -2,11 +2,12 @@ import "./list.css";
 import Navbar from "../../components/navbar/Navbar";
 import Header from "../../components/header/Header";
 import { useLocation } from "react-router-dom";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { format } from "date-fns";
 import { DateRange } from "react-date-range";
 import SearchItem from "../../components/searchItem/SearchItem";
 import useFetch from "../../hooks/useFetch";
+import { SearchContext } from "../../context/SearchContext";
 
 const List = () => {
   const location = useLocation();
@@ -14,14 +15,23 @@ const List = () => {
   const [dates, setDates] = useState(location.state.dates);
   const [openDate, setOpenDate] = useState(false);
   const [options, setOptions] = useState(location.state.options);
-  const [min, setMin] = useState(undefined);
-  const [max, setMax] = useState(undefined);
+  const [min, setMin] = useState("");
+  const [max, setMax] = useState("");
+  const { dispatch } = useContext(SearchContext);
 
   const { data, loading, error, reFetch } = useFetch(
     `/hotels?city=${destination}&min=${min || 0}&max=${max || 99999}`
   );
 
   const handleClick = () => {
+    dispatch({
+      type: "NEW_SEARCH",
+      payload: {
+        destination,
+        dates,
+        options,
+      },
+    });
     reFetch();
   };
 
@@ -35,7 +45,15 @@ const List = () => {
             <h1 className="lsTitle">Search</h1>
             <div className="lsItem">
               <label>Destination</label>
-              <input placeholder={destination} type="text" />
+              <input
+                id="destination"
+                placeholder={destination}
+                type="text"
+                value={destination}
+                onChange={(e) => {
+                  setDestination(e.target.value);
+                }}
+              />
             </div>
             <div className="lsItem">
               <label>Check-in Date</label>
@@ -110,9 +128,8 @@ const List = () => {
               "loading"
             ) : (
               <>
-                {data.map((item) => (
-                  <SearchItem item={item} key={item._id} />
-                ))}
+                {data &&
+                  data.map((item) => <SearchItem item={item} key={item._id} />)}
               </>
             )}
           </div>

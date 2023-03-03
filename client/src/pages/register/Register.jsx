@@ -1,19 +1,15 @@
 import axios from "axios";
 import { useContext, useState } from "react";
-import {Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { API_URL } from "../../API_URL";
 import { AuthContext } from "../../context/AuthContext";
 import "./register.css";
 
 const Register = () => {
   const [credentials, setCredentials] = useState({
-    name: undefined,
-    city: undefined,
-
-    country: undefined,
-    phone: undefined,
-    email: undefined,
-    password: undefined,
+    name: "",
+    email: "",
+    password: "",
   });
 
   const { loading, error, dispatch } = useContext(AuthContext);
@@ -46,124 +42,124 @@ const Register = () => {
 
   return (
     <div className="mainContainer">
-    <div className="contentArea">
-      <div className="right">
-        <h1>Create an Account!</h1>
-        <p>
-          Create your own personal <br /> account with your personal details
-          carefully
-        </p>
-        <form>
-          <input
-            style={{
-              width: "100%",
-              padding: "15px",
-              border: "none",
-              outline: "none",
-              backgroundColor: "#ddd",
-              borderRadius: "5px",
-            }}
-            type="text"
-            placeholder="Username"
-            id="username"
-            onChange={handleChange}
-          />
-          <input
-            style={{
-              width: "100%",
-              padding: "15px",
-              border: "none",
-              outline: "none",
-              backgroundColor: "#ddd",
-              borderRadius: "5px",
-            }}
-            type="email"
-            placeholder="Email"
-            id="email"
-            onChange={handleChange}
-          />
+      <div className="contentArea">
+        <div className="right">
+          <h1>Create an Account!</h1>
+          <p>
+            Create your own personal <br /> account with your personal details
+            carefully
+          </p>
+          <form>
+            <input
+              style={{
+                width: "100%",
+                padding: "15px",
+                border: "none",
+                outline: "none",
+                backgroundColor: "#ddd",
+                borderRadius: "5px",
+              }}
+              type="text"
+              placeholder="Username"
+              id="name"
+              onChange={handleChange}
+            />
+            <input
+              style={{
+                width: "100%",
+                padding: "15px",
+                border: "none",
+                outline: "none",
+                backgroundColor: "#ddd",
+                borderRadius: "5px",
+              }}
+              type="email"
+              placeholder="Email"
+              id="email"
+              onChange={handleChange}
+            />
 
-          <input
-            style={{
-              width: "100%",
-              padding: "15px",
-              border: "none",
-              outline: "none",
-              backgroundColor: "#ddd",
-              borderRadius: "5px",
-            }}
-            type="text"
-            placeholder="Phone"
-            id="phone"
-            onChange={handleChange}
-          />
+            {/* <input
+              style={{
+                width: "100%",
+                padding: "15px",
+                border: "none",
+                outline: "none",
+                backgroundColor: "#ddd",
+                borderRadius: "5px",
+              }}
+              type="text"
+              placeholder="Phone"
+              id="phone"
+              onChange={handleChange}
+            /> */}
 
-          <input
-            style={{
-              width: "100%",
-              padding: "15px",
-              border: "none",
-              outline: "none",
-              backgroundColor: "#ddd",
-              borderRadius: "5px",
-            }}
-            type="text"
-            placeholder="City"
-            id="city"
-            onChange={handleChange}
-          />
+            {/* <input
+              style={{
+                width: "100%",
+                padding: "15px",
+                border: "none",
+                outline: "none",
+                backgroundColor: "#ddd",
+                borderRadius: "5px",
+              }}
+              type="text"
+              placeholder="City"
+              id="city"
+              onChange={handleChange}
+            /> */}
 
-          <input
-            style={{
-              width: "100%",
-              padding: "15px",
-              border: "none",
-              outline: "none",
-              backgroundColor: "#ddd",
-              borderRadius: "5px",
-            }}
-            type="text"
-            placeholder="Country"
-            id="country"
-            onChange={handleChange}
-          />
+            {/* <input
+              style={{
+                width: "100%",
+                padding: "15px",
+                border: "none",
+                outline: "none",
+                backgroundColor: "#ddd",
+                borderRadius: "5px",
+              }}
+              type="text"
+              placeholder="Country"
+              id="country"
+              onChange={handleChange}
+            /> */}
 
-          <input
-            style={{
-              width: "100%",
-              padding: "15px",
-              border: "none",
-              outline: "none",
-              backgroundColor: "#ddd",
-              borderRadius: "5px",
-            }}
-            type="password"
-            placeholder="Password"
-            id="password"
-            onChange={handleChange}
-          />
+            <input
+              style={{
+                width: "100%",
+                padding: "15px",
+                border: "none",
+                outline: "none",
+                backgroundColor: "#ddd",
+                borderRadius: "5px",
+              }}
+              type="password"
+              placeholder="Password"
+              id="password"
+              onChange={handleChange}
+            />
 
-          <button disabled={loading} onClick={handleClick}>
-            Sign up
+            <button disabled={loading} onClick={handleClick}>
+              Sign up
+            </button>
+            {error && <span>{error.message}</span>}
+          </form>
+        </div>
+        <div className="left">
+          <h1>Hello There!</h1>
+          <p>Create your own personal account carefully</p>
+          <span style={{ padding: "20px 0" }}>Already have a account?</span>
+          <button>
+            <Link
+              to="/login"
+              style={{ color: "inherit", textDecoration: "none" }}
+            >
+              Login
+            </Link>
           </button>
-          {error && <span>{error.message}</span>}
-        </form>
-      </div>
-      <div className="left">
-        <h1>Hello There!</h1>
-        <p>Create your own personal account carefully</p>
-        <span style={{ padding: "20px 0" }}>Already have a account?</span>
-        <button>
-          <Link
-            to="/login"
-            style={{ color: "inherit", textDecoration: "none" }}
-          >
-            Login
-          </Link>
-        </button>
+        </div>
       </div>
     </div>
-  </div>
-);
+  );
 };
 export default Register;
